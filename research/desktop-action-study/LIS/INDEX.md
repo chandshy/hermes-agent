@@ -57,7 +57,7 @@ Target path for an id `purpose.subpurpose.verb` is:
 
 | Id | Verb | Current home |
 |---|---|---|
-| connect.ssh.open | Open the SSH session to the selected host | `electron/connection-apply.ts`, `electron/managed-ssh-update.ts`, `hermes:connection` |
+| connect.ssh.open | Open the SSH session to the selected host | `mapped`. Card: `LIS/actions/connect.ssh.open.md`. Body is `bootstrapSshConnectionInner` → `SshConnection.open` → `remoteLifecycle.connect` |
 | connect.ssh.test | Test that a host answers | `hermes:connections:test`, `hermes:connection-config:test` |
 | connect.ssh.resolveHost | Resolve an SSH config host | `hermes:ssh-config:resolve`, `hermes:ssh-config:hosts` |
 | connect.local.probe | See if a local backend is there | `hermes:local-backend:probe`, `electron/backend-probes.ts` |
@@ -149,18 +149,18 @@ Channels named on an action row are assigned. These channels are also assigned, 
 | Channel | Id |
 |---|---|
 | `hermes:connections:set-last-used` | connect.registry.setPrimary |
-| `hermes:connections:update-managed` | connect.ssh.open |
-| `hermes:connections:update-all` | connect.ssh.open |
+| `hermes:connections:update-managed` | unassigned. Map of connect.ssh.open showed this is `requestManagedSshUpdate`, not the open |
+| `hermes:connections:update-all` | unassigned. Same as update-managed |
 | `hermes:connection:for` | connect.ssh.open |
 | `hermes:connection:revalidate` | connect.ssh.test |
 | `hermes:connection-config:get` | connect.registry.list |
 | `hermes:connection-config:probe` | connect.ssh.test |
 | `hermes:connection-config:oauth-login` | connect.cloud.login |
 | `hermes:connection-config:oauth-logout` | connect.cloud.logout |
-| `hermes:connection-config:apply` | connect.ssh.open |
+| `hermes:connection-config:apply` | unassigned. Saves config and tears down; the following `getConnection` is the open |
 | `hermes:connection:active-route` | arrange.route.open |
-| `hermes:gateway:ws-url` | connect.ssh.open |
-| `hermes:gateway:ws-url-for` | connect.ssh.open |
+| `hermes:gateway:ws-url` | unassigned. Reads a URL after the dashboard exists |
+| `hermes:gateway:ws-url-for` | unassigned. Same as `hermes:gateway:ws-url` |
 | `hermes:cloud:agent-sign-in` | connect.cloud.login |
 | `hermes:profile:default:get` | direct.profile.get |
 | `hermes:profile:remember` | direct.profile.set |
@@ -243,7 +243,7 @@ Channels named on an action row are assigned. These channels are also assigned, 
 | `hermes:power-battery:get` | arrange.window.control |
 | `hermes:zoom:get` | arrange.window.zoom |
 | `hermes:machine:profile` | maintain.version.read |
-| `hermes:get-remote-display-reason` | connect.ssh.open |
+| `hermes:get-remote-display-reason` | unassigned. Display copy, not the session |
 | `hermes:secret-storage:get` | connect.registry.save |
 | `hermes:secret-storage:set` | connect.registry.save |
 | `hermes:requestMicrophoneAccess` | talk.compose.submit |
