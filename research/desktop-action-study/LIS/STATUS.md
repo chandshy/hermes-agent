@@ -5,12 +5,14 @@ Updated: 2026-09-26
 ## Cursor
 
 - Action id: `connect.ssh.open`
-- Allowed step: `map`
-- Do not create `do.ts` in this next session. Write the card only.
+- Allowed step: `split`
+- Create `apps/desktop/actions/connect/ssh/open/do.ts` from the card. Point `hermes:connection` and `hermes:connection:for` at it. Do not pull in the channels listed under `not_on_path`.
 
 ## Last finished step
 
-The global plan and this index were written. No application code has been moved. Every action id in `INDEX.md` is `named`.
+`connect.ssh.open` is `mapped`. Card: `LIS/actions/connect.ssh.open.md`. No application code has been moved. Every other action id is still `named`.
+
+Channels the index had hung on this verb were detached and marked `unassigned`: `hermes:connections:update-managed`, `hermes:connections:update-all`, `hermes:connection-config:apply`, `hermes:gateway:ws-url`, `hermes:gateway:ws-url-for`, `hermes:get-remote-display-reason`.
 
 ## Where the words live
 
@@ -26,8 +28,8 @@ The global plan and this index were written. No application code has been moved.
 
 ## Next session does this
 
-1. Read `PLAN.md` and this file.
-2. Map `connect.ssh.open` from `electron/connection-apply.ts`, `electron/connection-config.ts`, `electron/managed-ssh-update.ts`, and the `hermes:connection*` handlers in `electron/main.ts`.
-3. Add `LIS/actions/connect.ssh.open.md` using `RECORD.md`.
-4. Set that INDEX row to `mapped` and move this cursor to `split` for the same id.
-5. Stop.
+1. Read `PLAN.md`, this file, and `LIS/actions/connect.ssh.open.md`.
+2. Split only that verb into `apps/desktop/actions/connect/ssh/open/do.ts`.
+3. Leave `ensureBackend`'s local-spawn branch where it is. `do` is the SSH bootstrap: `bootstrapSshConnectionInner` through `SshConnection.open` and `remoteLifecycle.connect`.
+4. Set the INDEX row to `split` and move this cursor to `prove` for the same id.
+5. Stop. Do not click through the UI in that session.
