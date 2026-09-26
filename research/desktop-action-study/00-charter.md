@@ -1,5 +1,7 @@
 # Desktop action study
 
+The working plan is `PLAN.md`. The cursor is `LIS/STATUS.md`. This file is the original method note.
+
 Research branch on the fork of NousResearch/hermes-agent.
 Question: how should Hermes Desktop be organized so each user action is a small, obvious piece of code?
 
